@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HZRT Translator</title>
+    <!-- Include Bootstrap CSS (adjust the path accordingly) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Include Font Awesome Icons (adjust the path accordingly) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-translate {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-translate:hover {
+            background-color: #0056b3;
+        }
+        .translation-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">HZRT Translator</h2>
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="translate">Enter Text:</label>
+            <input type="text" name="translate" id="translate" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="language">Select Language:</label>
+            <select name="language" id="language" class="form-control" required>
+                <option value="Persian">Persian</option>
+                <option value="English">English</option>
+                <option value="German">German</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-translate">Translate <i class="fas fa-language"></i></button>
+    </form>
+
+    <!-- Display the translation result -->
+    {% if translation %}
+        <div class="translation-result">
+            <p><strong>Input Text:</strong> {{ input_text }}</p>
+            <p><strong>Selected Language:</strong> {{ selected_language }}</p>
+            <p><strong>Translation:</strong> {{ translation }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Include Bootstrap JS and Popper.js (optional, adjust the path accordingly) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- Include Font Awesome Icons JS (optional, adjust the path accordingly) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+
+</body>
+</html>
