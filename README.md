@@ -1,4 +1,4 @@
-# PyWebTranslator
+# PyTranslator
 
 A simple web application for translating text between languages.
 
